@@ -8,7 +8,7 @@ const Page1 = () => {
       <div className="flagCenter">
         <h1 className="country">Argentina (PAGE 1)</h1>
         <div className="otherLinks">
-          <Link to="/page2">Nigeria</Link>
+          <Link id="nigeria" to="/page2">Nigeria</Link>
           <Link to="/">Home</Link>
         </div>
       </div>
