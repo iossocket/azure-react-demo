@@ -1,0 +1,39 @@
+version: "3"
+services:
+  mynginx:
+    image: iossocket/mynginx
+    container_name: mynginx
+    command: nginx -g 'daemon off;'
+    ports:
+      - "8080:8888"
+    expose:
+      - "8888"
+  selenium-hub:
+    image: selenium/hub:3.141.59-neon
+    container_name: selenium-hub
+    ports:
+      - "4444:4444"
+    depends_on:
+      - mynginx
+  chrome:
+    image: selenium/node-chrome:3.141.59-neon
+    volumes:
+      - /dev/shm:/dev/shm
+    depends_on:
+      - selenium-hub
+    environment:
+      - HUB_HOST=selenium-hub
+      - HUB_PORT=4444
+    links:
+      - mynginx
+  firefox:
+    image: selenium/node-firefox:3.141.59-neon
+    volumes:
+      - /dev/shm:/dev/shm
+    depends_on:
+      - selenium-hub
+    environment:
+      - HUB_HOST=selenium-hub
+      - HUB_PORT=4444
+    links:
+      - mynginx

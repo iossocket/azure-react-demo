@@ -12,7 +12,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "jest -t sum",
-    "uitest": "jest -t router",
+    "uitest": "jest -t hub",
+    "uitests": "jest router.chrome.test.js & jest router.firefox.test.js",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -35,8 +36,9 @@
     "@babel/preset-env": "^7.4.4",
     "@types/jest": "24.0.13",
     "babel-jest": "^24.8.0",
-    "jest": "24.7.1",
     "chromedriver": "^74.0.0",
+    "geckodriver": "^1.16.2",
+    "jest": "24.7.1",
     "selenium-webdriver": "^4.0.0-alpha.1"
   }
 }
